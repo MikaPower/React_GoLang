@@ -1,0 +1,10 @@
+database:
+  driver: "postgres"
+  dbname: "gin"
+  username: "docker"
+  password: "docker"
+  host: "db"
+  port: "5432"
+
+server:
+  port: "8080"

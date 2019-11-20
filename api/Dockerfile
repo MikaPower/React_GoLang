@@ -7,23 +7,23 @@ ARG app_env
 ENV APP_ENV $app_env
 
 # it is okay to leave user/GoDoRP as long as you do not want to share code with other libraries
-COPY . /go/src/github.com/user/GoDoRP/api
-WORKDIR /go/src/github.com/user/GoDoRP/api
+COPY . /go/src/api
+WORKDIR /go/src/api
+
+RUN ls -al
+RUN cd
+RUN ls -al
 
 # added vendor services will need to be included here
-RUN go get ./vendor/database
+#RUN go get ./vendor/database
+RUN go get -u github.com/gin-gonic/gin
 
 RUN go get ./
 RUN go build
 
+
 # if dev setting will use pilu/fresh for code reloading via docker-compose volume sharing with local machine
 # if production setting will build binary
-CMD if [ ${APP_ENV} = production ]; \
-	then \
-	api; \
-	else \
-	go get github.com/pilu/fresh && \
-	fresh; \
-	fi
+CMD go get github.com/pilu/fresh && fresh;
 	
 EXPOSE 8080

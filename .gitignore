@@ -2,7 +2,7 @@
 frontend/node_modules
 
 # postgres data
-db/pgdata
+db/pgdatasdsad
 
 # testing
 /coverage
